@@ -12,6 +12,8 @@ class AlibabaTestSpider(scrapy.Spider):
     def start_requests(self):
         url_head = 'https://www.alibaba.com/trade/search?fsb=y&IndexArea=product_en&CatId=&SearchText='
         url_tail = '&viewtype=L'
+        
+        # 在这里修改要爬取的关键词csv地址
         search_list = pd.read_csv(r'C:\Users\yuxin\OneDrive\Scrapy\alibaba_test\search_list.csv')
         for search_li in search_list['search_list']:
             search_url = url_head + search_li.replace(' ', '+') + url_tail
