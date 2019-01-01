@@ -7,13 +7,14 @@
 
 from scrapy import signals
 
-# 代理服务器
+# 代理服务器（我这里使用的是蘑菇代理）
 proxyServer = "http://transfer.mogumiao.com:9001"
 
-# appkey为你订单的key
-appkey = 'a09OTnFaY3ltY3oxeE9EUTp0YzdXM2s2YXhmTW1RTkY0'
+# appkey为你订单的key（请修改为自己的appkey-在蘑菇代理控制平台可以找到）
+appkey = '*****'
 proxyAuth = "Basic " + appkey
 
+# 把proxy添加到request的headers，代理访问
 class ProxyMiddleware(object):
     def process_request(self, request, spider):
         request.meta["proxy"] = proxyServer
